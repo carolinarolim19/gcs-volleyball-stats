@@ -1134,6 +1134,8 @@ class _GameScreenState extends State<GameScreen> {
   Future<void> exportCurrentMatchToExcel() async {
     if (match == null) return;
 
+    debugPrint('É WEB: $kIsWeb');
+
     final events = context
         .read<MatchEventProvider>()
         .events

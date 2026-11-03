@@ -59,6 +59,7 @@ class MatchExcelExportService {
         'O navegador não utiliza ficheiros locais.',
       );
     }
+    debugPrint('GET EXCEL FILE | É WEB: $kIsWeb');
 
     final directory = await getApplicationDocumentsDirectory();
 
