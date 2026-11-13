@@ -628,16 +628,19 @@ class MatchExcelExportService {
         ace + positivo + fraco + erro;
 
     return {
+      // Eficácia: percentagem de serviços que foram Ace
       'efficiency': calculateRate(
         ace,
         total,
       ),
+
+      // Taxa de Acerto: todos os serviços que não foram erro
       'successRate': calculateRate(
-        (3 * ace) +
-            (2 * positivo) +
-            fraco,
-        3 * total,
+        total - erro,
+        total,
       ),
+
+      // Taxa de Erro: percentagem de serviços que foram erro
       'errorRate': calculateRate(
         erro,
         total,
@@ -691,10 +694,8 @@ class MatchExcelExportService {
         total,
       ),
       'successRate': calculateRate(
-        (3 * bolaA) +
-            (2 * bolaB) +
-            bolaC,
-        3 * total,
+        total - erro,
+        total,
       ),
       'errorRate': calculateRate(
         erro,
@@ -761,10 +762,8 @@ class MatchExcelExportService {
         total,
       ),
       'successRate': calculateRate(
-        (3 * ponto) +
-            (2 * continuacao) +
-            passeManchete,
-        3 * total,
+        total - erro - bloqueado,
+        total,
       ),
       'errorRate': calculateRate(
         erro + bloqueado,
@@ -811,8 +810,8 @@ class MatchExcelExportService {
         total,
       ),
       'successRate': calculateRate(
-        (2 * ponto) + toque,
-        2 * total,
+        total - erro,
+        total,
       ),
       'errorRate': calculateRate(
         erro,
@@ -870,10 +869,8 @@ class MatchExcelExportService {
         total,
       ),
       'successRate': calculateRate(
-        (3 * excelente) +
-            (2 * positiva) +
-            continuacao,
-        3 * total,
+        total - erro,
+        total,
       ),
       'errorRate': calculateRate(
         erro,
@@ -3399,10 +3396,8 @@ class MatchExcelExportService {
       gameRow,
       10,
       calculateRate(
-        (3 * serviceAce) +
-            (2 * servicePositive) +
-            serviceWeak,
-        3 * serviceTotal,
+        serviceTotal - serviceError,
+        serviceTotal,
       ),
     );
 
@@ -3440,10 +3435,8 @@ class MatchExcelExportService {
       gameRow,
       17,
       calculateRate(
-        (3 * receptionA) +
-            (2 * receptionB) +
-            receptionC,
-        3 * receptionTotal,
+        receptionTotal - receptionError,
+        receptionTotal,
       ),
     );
 
@@ -3483,10 +3476,8 @@ class MatchExcelExportService {
       gameRow,
       25,
       calculateRate(
-        (3 * attackPoint) +
-            (2 * attackContinuation) +
-            attackPass,
-        3 * attackTotal,
+        attackTotal - attackError - attackBlocked,
+        attackTotal,
       ),
     );
 
@@ -3522,8 +3513,8 @@ class MatchExcelExportService {
       gameRow,
       31,
       calculateRate(
-        (2 * blockPoint) + blockTouch,
-        2 * blockTotal,
+        blockTotal - blockError,
+        blockTotal,
       ),
     );
 
@@ -3561,10 +3552,8 @@ class MatchExcelExportService {
       gameRow,
       38,
       calculateRate(
-        (3 * defenseExcellent) +
-            (2 * defensePositive) +
-            defenseContinuation,
-        3 * defenseTotal,
+        defenseTotal - defenseError,
+        defenseTotal,
       ),
     );
 
@@ -3715,10 +3704,8 @@ class MatchExcelExportService {
       totalRow,
       10,
       calculateRate(
-        (3 * totalServiceAce) +
-            (2 * totalServicePositive) +
-            totalServiceWeak,
-        3 * totalServiceActions,
+        totalServiceActions - totalServiceError,
+        totalServiceActions,
       ),
     );
 
@@ -3763,10 +3750,8 @@ class MatchExcelExportService {
       totalRow,
       17,
       calculateRate(
-        (3 * totalReceptionA) +
-            (2 * totalReceptionB) +
-            totalReceptionC,
-        3 * totalReceptionActions,
+        totalReceptionActions - totalReceptionError,
+        totalReceptionActions,
       ),
     );
 
@@ -3815,10 +3800,10 @@ class MatchExcelExportService {
       totalRow,
       25,
       calculateRate(
-        (3 * totalAttackPoint) +
-            (2 * totalAttackContinuation) +
-            totalAttackPass,
-        3 * totalAttackActions,
+        totalAttackActions -
+            totalAttackError -
+            totalAttackBlocked,
+        totalAttackActions,
       ),
     );
 
@@ -3860,9 +3845,8 @@ class MatchExcelExportService {
       totalRow,
       31,
       calculateRate(
-        (2 * totalBlockPoint) +
-            totalBlockTouch,
-        2 * totalBlockActions,
+        totalBlockActions - totalBlockError,
+        totalBlockActions,
       ),
     );
 
@@ -3907,10 +3891,8 @@ class MatchExcelExportService {
       totalRow,
       38,
       calculateRate(
-        (3 * totalDefenseExcellent) +
-            (2 * totalDefensePositive) +
-            totalDefenseContinuation,
-        3 * totalDefenseActions,
+        totalDefenseActions - totalDefenseError,
+        totalDefenseActions,
       ),
     );
 
@@ -5225,10 +5207,8 @@ class MatchExcelExportService {
     writePercentage(
       10,
       calculateRate(
-        (3 * serviceAce) +
-            (2 * servicePositive) +
-            serviceWeak,
-        3 * serviceTotal,
+        serviceTotal - serviceError,
+        serviceTotal,
       ),
     );
 
@@ -5278,10 +5258,8 @@ class MatchExcelExportService {
     writePercentage(
       17,
       calculateRate(
-        (3 * receptionA) +
-            (2 * receptionB) +
-            receptionC,
-        3 * receptionTotal,
+        receptionTotal - receptionError,
+        receptionTotal,
       ),
     );
 
@@ -5336,10 +5314,8 @@ class MatchExcelExportService {
     writePercentage(
       25,
       calculateRate(
-        (3 * attackPoint) +
-            (2 * attackContinuation) +
-            attackPass,
-        3 * attackTotal,
+        attackTotal - attackError - attackBlocked,
+        attackTotal,
       ),
     );
 
@@ -5385,9 +5361,8 @@ class MatchExcelExportService {
     writePercentage(
       31,
       calculateRate(
-        (2 * blockPoint) +
-            blockTouch,
-        2 * blockTotal,
+        blockTotal - blockError,
+        blockTotal,
       ),
     );
 
@@ -5437,10 +5412,8 @@ class MatchExcelExportService {
     writePercentage(
       38,
       calculateRate(
-        (3 * defenseExcellent) +
-            (2 * defensePositive) +
-            defenseContinuation,
-        3 * defenseTotal,
+        defenseTotal - defenseError,
+        defenseTotal,
       ),
     );
 
