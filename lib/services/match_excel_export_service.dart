@@ -1213,7 +1213,7 @@ class MatchExcelExportService {
         sheet
             .cell(
           CellIndex.indexByColumnRow(
-            columnIndex: 51,
+            columnIndex: 54,
             rowIndex: rowIndex,
           ),
         )
@@ -1222,7 +1222,7 @@ class MatchExcelExportService {
         );
       }
     }
-    sheet.setColumnWidth(51, 0);
+    sheet.setColumnWidth(54, 0);
     return sheetName;
   }
 
@@ -1249,7 +1249,7 @@ class MatchExcelExportService {
     sheet
         .cell(
       CellIndex.indexByColumnRow(
-        columnIndex: 51,
+        columnIndex: 54,
         rowIndex: startRow,
       ),
     )
@@ -6190,7 +6190,7 @@ class MatchExcelExportService {
     ) {
       final cell = sheet.cell(
         CellIndex.indexByColumnRow(
-          columnIndex: 51,
+          columnIndex: 54,
           rowIndex: rowIndex,
         ),
       );
